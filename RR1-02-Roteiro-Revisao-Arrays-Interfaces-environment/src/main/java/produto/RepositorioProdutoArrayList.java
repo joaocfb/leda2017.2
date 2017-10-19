@@ -40,8 +40,7 @@ public class RepositorioProdutoArrayList {
 	 * @return
 	 */
 	private int procurarIndice(int codigo) {
-		// TODO Implement your code here
-		throw new UnsupportedOperationException("Not implemented yet!");
+		return this.produtos.indexOf(codigo);
 	}
 
 	/**
@@ -51,8 +50,7 @@ public class RepositorioProdutoArrayList {
 	 * @return
 	 */
 	public boolean existe(int codigo) {
-		// TODO Implement your code here
-		throw new UnsupportedOperationException("Not implemented yet!");
+		
 	}
 
 	/**

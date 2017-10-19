@@ -42,8 +42,12 @@ public class RepositorioProdutoPerecivelArray {
 	 * @return
 	 */
 	private int procurarIndice(int codigo) {
-		// TODO Implement your code here
-		throw new UnsupportedOperationException("Not implemented yet!");
+		for (int i = 0; i < produtos.length; i++) {
+			if (produtos[i].getCodigo() == codigo) {
+				return i;
+			}
+		}
+		return -1;
 	}
 
 	/**
@@ -53,38 +57,65 @@ public class RepositorioProdutoPerecivelArray {
 	 * @return
 	 */
 	public boolean existe(int codigo) {
-		// TODO Implement your code here
-		throw new UnsupportedOperationException("Not implemented yet!");
+		for (int i = 0; i < produtos.length; i++) {
+			if (produtos[i].getCodigo() == codigo) {
+				return true;
+			}
+		}
+		return false;
 	}
 
 	/**
 	 * Insere um novo produto (sem se preocupar com duplicatas)
 	 */
 	public void inserir(ProdutoPerecivel produto) {
-		// TODO Implement your code here
-		throw new UnsupportedOperationException("Not implemented yet!");
+		this.produtos[-1] = produto;
 	}
 
 	/**
 	 * Atualiza um produto armazenado ou retorna um erro caso o produto nao
 	 * esteja no array. Note que, para localizacao, o código do produto será
 	 * utilizado.
+	 * @throws Exception 
 	 */
-	public void atualizar(ProdutoPerecivel produto) {
-		// TODO Implement your code here
-		throw new UnsupportedOperationException("Not implemented yet!");
+	public void atualizar(ProdutoPerecivel produto) throws Exception {
+		if (!this.existeNoArray(produto)) {
+			throw new Exception("O produto não está armazenado no array");
+		} else {
+			this.produtos[procurarIndice(produto.getCodigo())] = produto;
+		}
 	}
 
+	/**
+	 * Metodo privado para buscar a existencia de um produto dentro do array
+	 * @param produto
+	 * @return
+	 */
+	
+	private boolean existeNoArray(ProdutoPerecivel produto) {
+		for (ProdutoPerecivel produtoPerecivel : produtos) {
+			if (produtoPerecivel.equals(produto)) {
+				return true;
+			}
+		}
+		return false;
+	}
+	
 	/**
 	 * Remove produto com determinado codigo, se existir, ou entao retorna um
 	 * erro, caso contrário. Note que a remoção NÃO pode deixar "buracos" no
 	 * array.
 	 * 
 	 * @param codigo
+	 * @throws Exception 
 	 */
-	public void remover(int codigo) {
-		// TODO Implement your code here
-		throw new UnsupportedOperationException("Not implemented yet!");
+	public void remover(int codigo) throws Exception {
+		int ind = this.procurarIndice(codigo);
+		if(ind == -1) {
+			throw new Exception("Não é possivel remover produto pois não está no array");
+		} else {
+			this.produtos[ind] = null;
+		}
 	}
 
 	/**
@@ -93,9 +124,14 @@ public class RepositorioProdutoPerecivelArray {
 	 * 
 	 * @param codigo
 	 * @return
+	 * @throws Exception 
 	 */
-	public ProdutoPerecivel procurar(int codigo) {
-		// TODO Implement your code here
-		throw new UnsupportedOperationException("Not implemented yet!");
+	public ProdutoPerecivel procurar(int codigo) throws Exception {
+		for (ProdutoPerecivel produtoPerecivel : produtos) {
+			if(produtoPerecivel.getCodigo() == codigo) {
+				return produtoPerecivel;
+			}
+		}
+		throw new Exception("O produto com este codigo não está armazenado");
 	}
 }
