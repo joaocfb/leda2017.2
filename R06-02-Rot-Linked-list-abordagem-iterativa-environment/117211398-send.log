@@ -17,3 +17,13 @@
   <level>FINE</level>
   <message>File 117211398-JOAO CARLOS FERNANDES BERNARDO.zip was received. It was sent by JOAO CARLOS FERNANDES BERNARDO from IP 150.165.42.124</message>
 </record>
+</log>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2017-11-28T00:12:52.266-0300</date>
+  <logger>JOAO CARLOS FERNANDES BERNARDO</logger>
+  <level>FINE</level>
+  <message>File 117211398-JOAO CARLOS FERNANDES BERNARDO.zip was received. It was sent by JOAO CARLOS FERNANDES BERNARDO from IP 192.168.0.102</message>
+</record>

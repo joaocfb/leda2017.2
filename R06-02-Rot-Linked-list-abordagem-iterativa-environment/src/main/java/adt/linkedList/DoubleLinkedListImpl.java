@@ -5,22 +5,31 @@ public class DoubleLinkedListImpl<T> extends SingleLinkedListImpl<T> implements
 
 	protected DoubleLinkedListNode<T> last;
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public void insertFirst(T element) {
-		// TODO Auto-generated method stub
-		throw new UnsupportedOperationException("Not implemented yet!");
+		DoubleLinkedListNode<T> elementIt =  (DoubleLinkedListNode<T>) element ;
+		if (this.size() == 0) {
+			last = elementIt;
+		} else {
+			last.setNext(last.getPrevious());
+			last.setPrevious(elementIt);
+			head = elementIt;
+		}
 	}
 
 	@Override
 	public void removeFirst() {
-		// TODO Auto-generated method stub
-		throw new UnsupportedOperationException("Not implemented yet!");
+		last = (DoubleLinkedListNode<T>) last.next;
+		head = last;
 	}
 
 	@Override
 	public void removeLast() {
-		// TODO Auto-generated method stub
-		throw new UnsupportedOperationException("Not implemented yet!");
+		while (last.getNext() != null) {
+			last.getNext();
+		}
+		last = null;
 	}
 
 	public DoubleLinkedListNode<T> getLast() {

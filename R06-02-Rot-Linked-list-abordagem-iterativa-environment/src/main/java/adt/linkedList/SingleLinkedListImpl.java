@@ -18,11 +18,10 @@ public class SingleLinkedListImpl<T> implements LinkedList<T> {
 
 	@Override
 	public int size() {
-		int contador = 1;
-		SingleLinkedListNode<T> element = head.getNext();
-		while (element != null) {
+		int contador = 0;
+		while (head.getNext() != null) {
 			contador ++;
-			element = head.getNext();
+			head.getNext();
 		}
 		return contador;
 	}
@@ -43,9 +42,8 @@ public class SingleLinkedListImpl<T> implements LinkedList<T> {
 	@Override
 	public void insert(T element) {
 		if (element != null) {
-			SingleLinkedListNode<T> elementIt = head;
-			while (elementIt != null) {
-				elementIt.getNext();
+			while (head.getNext() != null) {
+				head.getNext();
 			}
 			head.setNext((SingleLinkedListNode<T>) element);
 		}
@@ -53,7 +51,6 @@ public class SingleLinkedListImpl<T> implements LinkedList<T> {
 
 	@Override
 	public void remove(T element) {
-		SingleLinkedListNode<T> elementIt = head;
 		while (head.getNext() != null) {
 			if (head.equals(element)) {
 				head.setNext(null);
@@ -63,10 +60,22 @@ public class SingleLinkedListImpl<T> implements LinkedList<T> {
 		}
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public T[] toArray() {
-		// TODO Auto-generated method stub
-		throw new UnsupportedOperationException("Not implemented!");
+		T[] array = (T[]) new Object[this.size()];
+		
+		SingleLinkedListNode<T> elementTemp = head;
+		int indexAtual = 0;
+		
+		while (indexAtual < this.size()) {
+			if(elementTemp != null) {
+				array[indexAtual] = (T) elementTemp.getData();
+				indexAtual++;
+				elementTemp.getNext(); 
+				}
+			}
+		return array;
 	}
 
 	public SingleLinkedListNode<T> getHead() {
